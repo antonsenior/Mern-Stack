@@ -1,0 +1,238 @@
+<app-header></app-header>
+<!-- funfact-section - start
+		================================================== -->
+<section id="funfact-section" class="funfact-section sec-ptb-60 clearfix">
+  <div class="container">
+    <div class="item-wrapper ul-li clearfix">
+      <ul class="clearfix">
+        <li>
+          <div class="funfact-item text-center" style="cursor: pointer" (click)="getClearAllCluster()">
+								<span class="item-icon">
+									<img src="assets/images/icons/icon_6.png" alt="icon_not_found">
+								</span>
+            <h3 class="item-title mb-0">All Clusters</h3>
+          </div>
+        </li>
+        <li>
+          <div class="funfact-item text-center" style="cursor: pointer" (click)="getUnsecuredCluster()">
+								<span class="item-icon">
+									<img src="assets/images/icons/icon_7.png" alt="icon_not_found">
+								</span>
+            <h3 class="item-title mb-0">Unsecured Clusters</h3>
+          </div>
+        </li>
+        <li>
+          <div class="funfact-item text-center" style="cursor: pointer" (click)="openClusterModal()">
+								<span class="item-icon">
+									<img src="assets/images/icons/icon_8.png" alt="icon_not_found">
+								</span>
+            <h3 class="item-title mb-0">Add Cluster</h3>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- funfact-section - end
+    ================================================== -->
+<section id="cnox-protection-section1" class="cnox-protection-section clearfix">
+  <div class="container">
+    <div class="row col-md-12">
+      <div class="form-group">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText"
+               placeholder="Search Bar">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- cnox-protection-section - start
+    ================================================== -->
+<section id="cnox-protection-section" class="cnox-protection-section sec-ptb-60 pt-0 clearfix">
+  <div class="container">
+    <form #clusterForm="ngForm" name="form">
+      <div class="cnox-protection-table">
+        <div class="table-container">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>
+                <input type="checkbox">
+                Name
+              </th>
+              <th>CNOX Protection</th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="table-container tbody-container scroll-bar">
+          <table class="table">
+            <tbody>
+            <tr *ngFor="let data of clusterlist | filter:  'cluster_name' : searchText; let i = index">
+            <td>
+              <input type="checkbox" [(ngModel)]="data.checked" required id="selectedCluster{{i}}"
+                     name="selectedCluster{{i}}" (change)="onClusterChange(data,i)">
+              {{data.cluster_name}}
+            </td>
+            <td>
+              <span>
+                <div *ngIf="data.showProgress;else other_content">
+                  <label>Preparing Stack</label>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" aria-valuemin="0"
+                         aria-valuemax="100" [style.width]="data.barWidth + '%'">
+                    {{data.barWidth + '%'}}
+                    </div>
+                </div>
+                </div>
+                <ng-template #other_content>
+                   <img class="dot-img"
+                        [src]="data.cnox_stack === 'gold_stack'? '../../assets/images/icons/icon_11.png':
+                            data.cnox_stack=== 'silver_stack'? '../../assets/images/icons/icon_40.png':
+                            data.cnox_stack=== 'bronze_stack' ? '../../assets/images/icons/icon_9.png':
+                            '../../assets/images/icons/icon_10.png'" alt="icon_not_found">
+                  {{data.cnox_stack ? data.cnox_stack : "Unsecured"}}
+                </ng-template>
+              </span>
+            </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="btns-group ul-li-right clearfix">
+          <ul class="clearfix">
+            <li>
+              <button type="button" class="bg-default-orange" (click)="openView()">
+                View
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      [ngClass]="(this.clusterData.cnox_stack === 'unsecured' || this.clusterData.cnox_stack === '') ? 'bg-default-orange': 'bg-light-gray'"
+                      [disabled]="this.clusterData.cnox_stack !== 'unsecured'"
+                      (click)="openModal()">
+                Secure
+              </button>
+            </li>
+            <li>
+              <button type="button" class="bg-default-orange"
+                      (click)="deleteStack()">
+                Delete
+              </button>
+              <!--<button type="button"
+                      [ngClass]="btncolor ? 'bg-default-orange': 'bg-light-gray'"
+                      [disabled]="(this.clusterData.cnox_stack === 'unsecured' || this.clusterData.cnox_stack === '')"
+                      (click)="deleteStack()">
+                Delete
+              </button>-->
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </form>
+
+    <div class="backdrop" [ngStyle]="{'display':viewDisplay}"></div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':viewDisplay}">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" (click)="closeView()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="info-list ul-li-block clearfix">
+              <h3 class="item-title">{{clusterData.cluster_name}}</h3>
+              <ul class="clearfix">
+                <li>
+                  <strong>CNOX Stack:</strong> {{clusterData.cnox_stack}} <img class="dot-img"
+                                                                               [src]="clusterData.cnox_stack === 'gold_stack'? '../../assets/images/icons/icon_11.png':
+                            clusterData.cnox_stack=== 'silver_stack'? '../../assets/images/icons/icon_40.png':
+                            clusterData.cnox_stack=== 'bronze_stack' ? '../../assets/images/icons/icon_9.png':
+                            '../../assets/images/icons/icon_10.png'" alt="icon_not_found">
+                </li>
+                <li>
+                  <strong>Monitoring url:</strong> <a target="_blank" title="{{clusterData.monitor_url}}"
+                                                      href="{{clusterData.monitor_url}}">Click here for Monitoring</a>
+                </li>
+                <li>
+                  <strong>Scanner url:</strong> <a target="_blank" title="{{clusterData.scanner_url}}"
+                                                   href="{{clusterData.scanner_url}}">Click here for Image Scanning</a>
+                </li>
+                <li>
+                  <strong>Compliance url:</strong> <a target="_blank" title="{{clusterData.compliance_url}}"
+                                                      href="{{clusterData.compliance_url}}">Click here for
+                  Compliance</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" (click)="closeView()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="info-list ul-li-block clearfix">
+              <h3 class="item-title">{{clusterData.cluster_name}}</h3>
+              <ul class="clearfix">
+                <li>
+                  <strong>CNOX Stack:</strong>
+                  <div class="select-option">
+                    <select (change)="onStackChange($event)" [value]='selectedStack'>
+                      <!--                      <option data-display="Select">Nothing</option>-->
+                      <option value="" selected="selected" disabled>Select</option>
+                      <option value="bronze_stack" selected>Bronze Stack</option>
+                      <option value="silver_stack">Silver Stack</option>
+                      <option value="gold_stack">Gold Stack</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+              <button type="submit" class="push-btn bg-default-orange" (click)="onStackUpdate()">PUSH</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="backdrop" [ngStyle]="{'display':clusterDisplay}"></div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':clusterDisplay}">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" (click)="onCloseCluster()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="info-list ul-li-block clearfix">
+              <div style="overflow-y: scroll; height: 200px">{{fileContent}}</div>
+              <button type="submit" class="push-btn bg-default-orange" (click)="copyText(fileContent)">Copy to
+                clipboard
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- cnox-protection-section - end
+    ================================================== -->
+
+<app-footer></app-footer>

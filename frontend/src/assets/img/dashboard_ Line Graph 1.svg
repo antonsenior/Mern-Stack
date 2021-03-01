@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="511" height="75" viewBox="0 0 511 75">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #060707;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="3103" y="3960" width="511" height="75" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="6" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="1.732"/>
+      <feFlood result="flood" flood-color="#716aca" flood-opacity="0.16"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+      <feFlood result="flood-2" flood-color="#ed1e3c"/>
+      <feComposite result="composite-2" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in2="blend"/>
+    </filter>
+  </defs>
+  <g transform="translate(-3103 -3960)" style="fill: none; filter: url(#filter)">
+    <path id="dashboard__Line_Graph_1" data-name="dashboard_ Line Graph 1" class="cls-1" d="M3106,3966.25c21.48-3.95,41.39-6.34,53.23-4.76,23.97,3.2,44.02,43.1,68.95,48.43,4.68,1,30.86-2.87,63.7-8.05,58.32-9.2,51.43,20.35,68.46,22.96,21.12,3.23,43.89-37.8,68.96-37.26,18.32,0.39,38.78,10.26,57.46,9.31,20.71-1.04,55.11-33.83,74.7-35.39,15.58-1.25,34.05,5.26,48.53,13.23" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use transform="translate(-3103 -3960)" xlink:href="#dashboard__Line_Graph_1" style="stroke: #060707; filter: none; fill: none"/>
+</svg>

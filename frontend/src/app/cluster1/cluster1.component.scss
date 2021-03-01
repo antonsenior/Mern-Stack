@@ -1,0 +1,37 @@
+.workload-compliance-table {
+  .wrapper-head {
+    ul {
+      li {
+        margin: 0 10px;
+        a {
+          font-size: 25px;
+          font-weight: 500;
+          position: relative;
+          color: #8c8c8c;
+          &::before {
+            opacity: 0;
+            left: 15px;
+            right: 15px;
+            height: 2px;
+            content: '';
+            bottom: -30px;
+            position: absolute;
+            -webkit-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: #f56417;
+          }
+          &.active {
+            color: #f56417;
+            &::before {
+              left: 0px;
+              right: 0px;
+              opacity: 1;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

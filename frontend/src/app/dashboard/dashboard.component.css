@@ -1,0 +1,7 @@
+.word-truncate {
+  width: 85%;
+  white-space: break-spaces;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

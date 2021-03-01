@@ -1,0 +1,43 @@
+<section id="register-section" class="register-section clearfix">
+  <div class="container">
+
+    <div class="content-wrapper">
+      <div class="brand-logo text-center mb-60 clearfix">
+        <a href="#!" class="brand-link">
+          <img src="assets/images/logo/logo_1.png" alt="logo_not_found">
+        </a>
+      </div>
+      <div class="register-form mb-30 clearfix">
+        <form action="#">
+          <div class="alert alert-danger" *ngIf="pass.errors?.pattern">
+            <div [hidden]="!pass.errors?.pattern">Password should be 15 character long with alphanumeric.</div>
+          </div>
+
+      <!-- <div class="alert alert-danger" *ngIf="!(pass.errors?.pattern) && (this.user.password !== this.user.confirmPassword)">
+         Confirm Password is not match.
+       </div>-->
+
+          <div class="form-item">
+            <input type="password" id="password-input" name="password" [(ngModel)]="user.password" required pattern="^(?=.*\d).{8,15}$" #pass="ngModel" placeholder="password">
+            <label for="password-input" class="form-btn"><i class="fas fa-lock-alt"></i></label>
+          </div>
+          <div class="form-item">
+            <input type="password" id="cpassword-input" name="confirmPassword" [(ngModel)]="user.confirmPassword" required (change)="onConfirmPassword()" placeholder="confirm password">
+            <label for="password-input" class="form-btn"><i class="fas fa-lock-alt"></i></label>
+          </div>
+          <button type="submit" class="submit-btn" (click)="onRegister()">
+            <i class="far fa-arrow-right"></i>
+          </button>
+          <div class="check-btn-wrp">
+            <div class="check-btn">
+              <input type="checkbox" id="meep-btn">
+              <label for="meep-btn" class="d-block">Keep Me Signed in</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>

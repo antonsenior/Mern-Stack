@@ -1,0 +1,363 @@
+<app-new-header></app-new-header>
+
+<!-- Site inner content all start -->
+
+<div class="site-inner-all wt-side-bar">
+  <div class="site-main-contnet-all">
+    <div class="page-title-bar inner-top-bar">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="serach-bar">
+              <div class="searh-bar-inner">
+                <button type="submit"><i class="far fa-search"></i></button>
+                <input type="text" placeholder=""  [(ngModel)]="searchText">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="cluster-rt-menus">
+              <div class="cluster-menu">
+                <ul>
+                  <li><a class="active-menu" style="cursor: pointer" (click)="getClearAllCluster()">All Clusters</a></li>
+                  <li><a style="cursor: pointer" (click)="getUnsecuredCluster()">Unsecured</a></li>
+                </ul>
+              </div>
+              <div class="plust-icon">
+                <a  style="cursor: pointer" (click)="openClusterModal()"><i class="far fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cluster-info-area">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="cl-single-blk cld-table">
+              <div class="nodes-table">
+                <div class="table-header">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th class="t-frst">Cluster</th>
+                      <th class="t-sec">Stack</th>
+                      <th class="t-lst">Status</th>
+                    </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div class="table-content">
+                  <table class="table">
+                    <tbody>
+                    <tr class="nbr" *ngFor="let data of clusterlist | filter:  'cluster_name' : searchText; let i = index">
+                      <td>
+                        <span class="sq">
+                          <input type="checkbox" [(ngModel)]="data.checked" required id="selectedCluster{{i}}"
+                                 name="selectedCluster{{i}}" (change)="onClusterChange(data,i)">
+<!--                          <i class="fas fa-square"></i>-->
+                        </span>{{data.cluster_name}}
+                      </td>
+                      <td>{{data.cnox_stack}}</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <!--<tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-yellow"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Bronze</td>
+                      <td><span class="sq-red"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Bronze</td>
+                      <td><span class="sq-yellow"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unsecured</td>
+                      <td><span class="sq-green"><i class="fas fa-square"></i></span></td>
+                    </tr>-->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="table-bottom-buttons">
+                <a style="cursor: pointer" (click)="openView()"><span><img src="../../assets/img/bt-ico-1.png" alt=""></span>Stack View</a>
+                <a style="cursor: pointer" id="deploy-stack" [class.disabled]="this.clusterData.cnox_stack !== 'unsecured'" (click)="openModal()" class="active"><span><img src="../../assets/img/bt-ico-1.png" alt=""></span>Deploy Stack</a>
+                <a style="cursor: pointer" (click)="deleteStack()"><span><img src="../../assets/img/bt-ico-2.png" alt=""></span>Delete Stack</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <div class="cl-single-blk">
+              <h2>CNOX Resources</h2>
+              <div class="cnox-box">
+                <div class="cox-box-inner-part">
+                  <div class="cnx-sm-clmn">
+                    <div class="cnx-small-blk">
+                      <div class="cnx-text">
+                        <span class="cnx-number">10</span>
+                      </div>
+                      <h4>Clusters</h4>
+                    </div>
+                    <div class="cnx-small-blk btm">
+                      <div class="cnx-text">
+                        <span class="cnx-number">125</span>
+                      </div>
+                      <h4>PODs</h4>
+                    </div>
+                  </div>
+                  <div class="cnx-main-progress-bar">
+                    <div id="circle">
+                      <span class="progress-bar-circle-percentes"></span>
+                    </div>
+                  </div>
+                  <div class="cnx-sm-clmn">
+                    <div class="cnx-small-blk">
+                      <div class="cnx-text">
+                        <span class="cnx-number">10</span>
+                      </div>
+                      <h4>Clusters</h4>
+                    </div>
+                    <div class="cnx-small-blk btm">
+                      <div class="cnx-text">
+                        <span class="cnx-number">125</span>
+                      </div>
+                      <h4>PODs</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cl-single-blk mt-30">
+              <h2>CLUSTERS NOT IN SYNC</h2>
+              <div class="nodes-table">
+                <div class="table-header">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th class="t-frst">Cluster</th>
+                      <th class="t-lst">Status</th>
+                    </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div class="table-content">
+
+
+                  <table class="table">
+                    <tbody>
+                    <tr class="nbr">
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unreachable since 2 days</td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unreachable since 2 days</td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unreachable since 2 days</td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unreachable since 2 days</td>
+                    </tr>
+                    <tr>
+                      <td><span class="sq"><i class="fas fa-square"></i></span>cll.domain</td>
+                      <td>Unreachable since 2 days</td>
+                    </tr>
+
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="backdrop" [ngStyle]="{'display':clusterDisplay}"></div>
+
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':clusterDisplay}">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="onCloseCluster()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="info-list ul-li-block clearfix">
+            <div style="overflow-y: scroll; height: 200px">{{fileContent}}</div>
+            <button type="submit" class="push-btn bg-default-orange" (click)="copyText(fileContent)">Copy to
+              clipboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="backdrop" [ngStyle]="{'display':display}"></div>
+
+  <!--<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="closeView()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="info-list ul-li-block clearfix">
+            <h3 class="item-title">{{clusterData.cluster_name}}</h3>
+            <ul class="clearfix">
+              <li>
+                <strong>CNOX Stack:</strong>
+                <div class="select-option">
+                  <select (change)="onStackChange($event)" [value]='selectedStack'>
+                    &lt;!&ndash;                      <option data-display="Select">Nothing</option>&ndash;&gt;
+                    <option value="" selected="selected" disabled>Select</option>
+                    <option value="bronze_stack" selected>Bronze Stack</option>
+                    <option value="silver_stack">Silver Stack</option>
+                    <option value="gold_stack">Gold Stack</option>
+                  </select>
+                </div>
+              </li>
+            </ul>
+            <button type="submit" class="push-btn bg-default-orange" (click)="onStackUpdate()">PUSH</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+  <div class="signup-signin-wrap" tabindex="-1" role="dialog" id="deploy-stack-pop" [ngStyle]="{'display':display}">
+    <div class="signup-wrap-inner">
+      <div class="popup-content">
+        <h4 class="pop-heading">{{clusterData.cluster_name}}</h4>
+        <div class="input-inside style-2">
+          <strong>CNOX Stack:</strong>
+
+          <div>
+            <select nice-select [(ngModel)]="selectedStack.stack_name">
+              <option value="" selected="selected" disabled>Select</option>
+              <option value="bronze_stack">Bronze Stack</option>
+              <option value="silver_stack">Silver Stack</option>
+              <option value="gold_stack">Gold Stack</option>
+            </select>
+          </div>
+        </div>
+        <div class="jesture-btn in-popup text-center">
+          <button class="box-btn" (click)="onStackUpdate()">Done</button >
+          <button class="box-btn cls-popup">Cancel</button>
+        </div>
+      </div>
+    </div> <!-- ./signup-wrap-inner -->
+  </div>
+
+</div>
+
+
+<!-- Site inner content all end -->

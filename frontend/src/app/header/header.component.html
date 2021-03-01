@@ -1,0 +1,94 @@
+
+<!-- backtotop - start -->
+<div id="thetop"></div>
+<div id="backtotop">
+  <a href="#" id="scroll">
+    <i class="far fa-arrow-up"></i>
+  </a>
+</div>
+<!-- backtotop - end -->
+
+
+
+
+
+<!-- header-section - start
+    ================================================== -->
+<header id="header-section" class="header-section sticky-header clearfix">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="brand-logo clearfix">
+          <a href="#!" class="brand-link float-left">
+            <img src="assets/images/logo/logo_1.png" alt="logo_not_found">
+          </a>
+          <button type="button" id="sidebar-collapse" class="mobile-menu-btn float-right">
+            <i class="fal fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-12 col-sm-12">
+        <div class="main-search">
+          <div class="form-item mb-0">
+            <input type="search" name="search" placeholder="Search here">
+            <button type="submit" class="form-btn">
+              <i class="far fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-12 col-sm-12">
+        <div class="main-menubar ul-li-right clearfix">
+          <ul class="clearfix">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+            <li routerLinkActive="active" ><a [routerLink]="['/cluster']">Cluster Sync</a></li>
+            <li routerLinkActive="active"><a [routerLink]="['/policy']">Policy</a></li>
+            <li><a href="#!">Events</a></li>
+            <li>
+              <button type="button"><i class="fal fa-cog"></i></button>
+            </li>
+            <li>
+              <div class="dropdown">
+                <button class="fas fa-user-circle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                  <a class="dropdown-item fa ">Welcome {{user.username}} </a>
+                  <a class="dropdown-item fa fa-user-circle">Edit Profile </a>
+                  <a class="dropdown-item fa fa-power-off" (click)="logout()">Log out</a>
+                </div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<div class="sidebar-menu-wrapper">
+  <div id="sidebar-menu" class="sidebar-menu">
+
+    <div class="dismiss text-right mb-60 clearfix">
+      <span class="close-btn"><i class="fal fa-times"></i></span>
+    </div>
+
+    <div class="menu-list ul-li-block clearfix">
+      <ul class="clearfix">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+        <li routerLinkActive="active" ><a [routerLink]="['/cluster']">Cluster Sync</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/policy']">Policy</a></li>
+        <li><a href="#!">Events</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="overlay"></div>
+</div>
+<!-- header-section - end
+    ================================================== -->

@@ -1,0 +1,131 @@
+<app-header></app-header>
+
+<!-- acmeinc-section - start
+    ================================================== -->
+<section id="acmeinc-section" class="acmeinc-section sec-ptb-60 clearfix">
+  <div class="container">
+
+    <div class="section-title mb-15">
+      <h2 class="title-text mb-0">{{customerName}}</h2>
+    </div>
+
+    <div class="row justify-content-lg-start justify-content-md-center">
+      <div class="col-lg-6 col-md-10 col-sm-12">
+        <div class="item-wrapper">
+          <div class="chart-item text-center">
+            <div class="chart-image mb-60">
+              <canvas baseChart
+                      [data]="pieChartData"
+                      [chartType]="pieChartType"
+                      [labels]="pieChartLabels"
+                      [options]="pieChartOptions"
+                      [colors]="pieChartColors"
+                      (chartClick)="onChartClick($event)"
+              ></canvas>
+            </div>
+            <h3 class="item-title mb-0">Cluster CNOX Protection</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-10 col-sm-12">
+        <div class="item-wrapper">
+          <div class="risk-content mb-30">
+            <div class="risk-items-list ul-li-block scroll-bar clearfix">
+              <ul class="clearfix">
+                <li *ngFor="let data of clusterlist">
+                  <div class="risk-item">
+                    <span class="item-title word-truncate">{{data.cluster_name}}</span>
+                    <button type="button" class="remove-btn">
+                      <img src="assets/images/icons/icon_3.png" alt="icon_not_found">
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <h3 class="item-title text-center mb-0">Cluster CNOX Protection</h3>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-10 col-sm-12">
+        <div class="item-wrapper">
+          <div class="wrapper-head text-center">
+            <h3 class="title-text mb-0">
+									<span class="item-icon">
+										<img src="assets/images/icons/icon_1.png" alt="icon_not_found">
+									</span>
+              Resources
+            </h3>
+          </div>
+
+          <div class="resources-items-wrap ul-li clearfix">
+            <ul class="clearfix">
+              <li>
+                <div class="resource-item text-center">
+											<span class="item-icon">
+												<img src="assets/images/icons/icon_4.png" alt="icon_not_found">
+											</span>
+                  <span class="value-text">{{totalCounts.TotalPods}}</span>
+                  <h3 class="item-title">Pods</h3>
+                </div>
+              </li>
+
+              <li>
+                <div class="resource-item text-center">
+											<span class="item-icon">
+												<img src="assets/images/icons/icon_5.png" alt="icon_not_found">
+											</span>
+                  <span class="value-text">{{totalCounts.TotalServices}}</span>
+                  <h3 class="item-title">Services</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-10 col-sm-12">
+        <div class="item-wrapper">
+          <div class="wrapper-head text-center">
+            <h3 class="title-text mb-0">
+									<span class="item-icon">
+										<img src="assets/images/icons/icon_2.png" alt="icon_not_found">
+									</span>
+              Operations Log
+            </h3>
+          </div>
+
+          <div class="operationslog-content">
+            <div class="operationslog-items-list ul-li-block scroll-bar clearfix">
+              <ul class="clearfix">
+                <li *ngFor="let data of logeventlist">
+                  <div class="operationslog-item">
+                    <p class="mb-0">
+													<span class="item-icon bg-default-green">
+														<i class="fal fa-check"></i>
+													</span>
+                      {{data.log_string}}
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- acmeinc-section - end
+    ================================================== -->
+
+
+<app-footer></app-footer>
+
+
+
+
+

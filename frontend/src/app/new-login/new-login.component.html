@@ -1,0 +1,87 @@
+<div class="login-main-wrap">
+  <img src="assets/img/login-trans-img-1.png" alt="" class="login-trans-img">
+
+  <div class="get-started-wrap">
+
+    <!-- Get Started Popup Markup  Start  -->
+    <div class="signup-signin-wrap" id="custom-goal">
+      <div class="signup-wrap-inner">
+        <div class="popup-content">
+          <h4 class="pop-heading">Request your 30-day Free Trial</h4>
+          <div class="input-inside style-2">
+            <label for="">Name</label>
+            <input type="text">
+          </div>
+          <div class="input-inside style-2">
+            <label for="">Email</label>
+            <input type="text">
+          </div>
+          <div class="input-inside style-2">
+            <label for="">Phone</label>
+            <input type="text">
+          </div>
+          <div class="input-inside style-2">
+            <label for="">Company Name</label>
+            <input type="text">
+          </div>
+          <div class="jesture-btn in-popup text-center">
+            <button class="box-btn">Done</button >
+            <button class="box-btn cls-popup">Cancel</button>
+          </div>
+        </div>
+      </div> <!-- ./signup-wrap-inner -->
+    </div>
+    <!-- Get Started Popup Markup  End -->
+
+
+    <a href="#">Don’t have an account?</a>
+    <button class="box-btn" id="get-started">Get Started</button>
+  </div>
+  <div class="login-inner-main">
+    <div class="login-content">
+      <div class="login-heading-content">
+        <div class="page-logo">
+          <a href="#"><img src="assets/img/logo.png" alt=""></a>
+        </div>
+        <h4>Welcome</h4>
+      </div> <!-- ./login-heading-content -->
+      <form action="#">
+        <div class="input-inside">
+          <label>Customer Name</label>
+          <input type="text" id="customer-name" name="customername" [(ngModel)]="user.customername"
+                 placeholder="Customer Name">
+        </div>
+        <div class="input-inside">
+          <label>User Name</label>
+          <input type="text" id="user-name" name="Username" [(ngModel)]="user.username" placeholder="username">
+        </div>
+        <div class="input-inside">
+          <div class="twin-flex"><label>Password</label> <a style="cursor: pointer" id="passForget">Forgot your Password?</a></div>
+          <input type="password" id="password-input" name="password" [(ngModel)]="user.password" required
+                 placeholder="Password">
+        </div>
+        <div class="input-inside text-center mt-30">
+          <button class="box-btn" (click)="onSubmit()">Sign In</button>
+        </div>
+      </form>
+    </div> <!-- ./login-content -->
+  </div> <!-- .login-inner-main -->
+</div> <!-- ./login-main-wrap -->
+
+<!-- Forget Password Popup Markup  Start  -->
+<div class="signup-signin-wrap" id="forgetpass">
+  <div class="signup-wrap-inner">
+    <div class="popup-content">
+      <h4 class="pop-heading">Forget Password</h4>
+      <div class="input-inside style-2">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" [(ngModel)]="user.email" placeholder="email">
+      </div>
+      <div class="jesture-btn in-popup text-center">
+        <button class="box-btn" (click)="onForgetSubmit()">Submit</button >
+        <button class="box-btn forget-cls-popup">Cancel</button>
+      </div>
+    </div>
+  </div> <!-- ./signup-wrap-inner -->
+</div>
+<!-- Forget Password Popup Markup  End -->

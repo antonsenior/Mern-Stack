@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="312" height="37.66" viewBox="0 0 312 37.66">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #feb605;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="dashboard_yellow_graph_line_" data-name="dashboard_yellow graph line " class="cls-1" d="M4532.48,3376.98l27.24-13.87,29.22,7.63,25.27-13.17,27.41,5.54,29.61-13.17,58.63,16.64,25.71-1.39,28.66-14.56,28.64,4.16,28.64-12.48" transform="translate(-4531 -3340.81)"/>
+</svg>

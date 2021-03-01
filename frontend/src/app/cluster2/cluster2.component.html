@@ -1,0 +1,93 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<main class="pl-200">
+
+  <!-- breadcrumb-section - start
+        ================================================== -->
+  <section id="breadcrumb-section" class="breadcrumb-section bg-white clearfix">
+    <div class="container">
+      <nav class="breadcrumb-nav ul-li clearfix">
+        <ul class="clearfix">
+          <li><a href="#!">Customer : </a>{{customerData.name}}</li>
+          <li><a href="#!">Cluster : </a>{{clusterData.cluster_name}}</li>
+          <li>Stack : {{clusterData.cnox_stack}}</li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+  <!-- breadcrumb-section - end
+        ================================================== -->
+
+
+
+  <!-- cluster-section - start
+        ================================================== -->
+  <section id="cluster-section" class="cluster-section sec-ptb-60 clearfix">
+    <div class="container">
+
+      <div class="section-title mb-15">
+        <h2 class="title-text mb-0">CIS Benchmarking</h2>
+      </div>
+
+      <div class="item-wrapper min-h-auto">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="select-option mb-30 clearfix">
+              <span class="item-title">Stack:</span>
+              <select nice-select class="form-control" (change)="onChange($event)">
+                <option *ngFor="let val of dropdown" value={{val}}>{{val}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center d-flex align-items-center">
+          <div class="col-lg-8 text-center">
+            <div class="chart-image mb-30">
+              <canvas baseChart
+                      [data]="pieChartData"
+                      [chartType]="pieChartType"
+                      [labels]="pieChartLabels"
+                      [options]="pieChartOptions"
+                      [colors]="pieChartColors"
+              ></canvas>
+            </div>
+            <a style="color: white" class="custom-btn bg-default-orange rounded text-uppercase" (click)="dynamicDownloadTxt()">Get Report</a>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="row mb-60 d-flex align-items-center">
+              <div class="col-lg-6 col-md-4 col-sm-12">
+                <div class="score-content text-center">
+                  <p class="mb-15">
+                    Compliance <br> Score
+                  </p>
+                  <span class="score-text bg-default-orange">
+												{{complianceScore}}
+											</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-content">
+              <p class="mb-1">Last scanned on :</p>
+              <span>{{lastScanValue  | date: 'yyyy-MM-dd hh:mm a'}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-wrapper">
+        <div class="chart-image mb-30 bg-image">
+          <img class="w-100" src="../../assets/images/chart.png" alt="image_not_found">
+        </div>
+        <div class="bg-text">
+          <h2>Waiting for Data</h2>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+  <!-- cluster-section - end
+        ================================================== -->
+
+</main>

@@ -1,0 +1,159 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<main class="pl-200">
+
+  <!-- breadcrumb-section - start
+        ================================================== -->
+  <section id="breadcrumb-section" class="breadcrumb-section bg-white clearfix">
+    <div class="container">
+      <nav class="breadcrumb-nav ul-li clearfix">
+        <ul class="clearfix">
+          <li><a href="#!">Customer : </a>{{customerData.name}}</li>
+          <li><a href="#!">Cluster : </a>{{clusterData.cluster_name}}</li>
+          <li>Stack : {{clusterData.cnox_stack}}</li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+  <!-- breadcrumb-section - end
+        ================================================== -->
+
+
+  <!-- software-section - start
+        ================================================== -->
+  <section id="software-section" class="software-section sec-ptb-60 clearfix">
+    <div class="container">
+
+      <div class="section-title mb-15">
+        <h2 class="title-text mb-0">Image Scan</h2>
+      </div>
+
+      <div class="item-wrapper image-scan min-h-auto">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="scan-list ul-li text-center clearfix">
+              <ul class="clearfix">
+                <li>
+                  <button type="button">
+                    <span class="bg-default-red">{{ReportTotal.Critical}}</span>
+                    <small>critical</small>
+                  </button>
+                </li>
+                <li>
+                  <button type="button">
+                    <span class="bg-default-orange">{{ReportTotal.High}}</span>
+                    <small>high</small>
+                  </button>
+                </li>
+                <li>
+                  <button type="button">
+                    <span class="bg-default-yellow">{{ReportTotal.Medium}}</span>
+                    <small>medium</small>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12" style="padding-right: 80px;">
+            <button type="button" (click)="onScannerURL()"
+                    [ngClass]="(scannerUrl === 'undefined') ? 'btn-secondary': 'bg-default-orange'"
+                    [disabled]="scannerUrl === 'undefined'"
+                    class="custom-btn rounded float-right text-uppercase">Scanner
+            </button>
+          </div>
+
+          <div class="col-lg-8 col-md-8 col-sm-12"></div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <div style="margin-top: -55px;float: right; font-size: 24px" *ngIf="!newUpdate;else other_content2">
+              <!--              Syncing Vulnerability Feeds-->
+            </div>
+            <ng-template #other_content2>
+              <div class="time-content" style="margin-top: -55px; margin-left: 70px;">
+                <p class="mb-1">Last scanned on :</p>
+                <span>{{lastScanValue | date: 'yyyy-MM-dd hh:mm a'}}</span>
+              </div>
+            </ng-template>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="item-wrapper">
+        <div class="wrapper-head text-center">
+          <div class="tabs-nav ul-li-center clearfix">
+            <ul class="nav" role="tablist">
+              <li>
+                <a class="active" data-toggle="tab" href="#byimage-tab">By Image</a>
+              </li>
+              <li>
+                <a data-toggle="tab" href="#bysev-tab">By Sev</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div id="byimage-tab" class="tab-pane active ">
+            <dx-data-grid id="gridContainer1"
+                          [dataSource]="imageKeys"
+                          [masterDetail]="{ enabled: true, template: 'detail' }"
+                          keyExpr="Image"
+                          [showBorders]="true">
+
+              <dxi-column style="color: black; font-weight: bold" dataField="Image" [width]="370" caption="Image"></dxi-column>
+              <dxi-column dataField="Vulnerability" caption="Vulnerability"></dxi-column>
+              <dxi-column dataField="Severity" caption="Severity"></dxi-column>
+
+              <div *dxTemplate="let data of 'detail'">
+                <dx-data-grid
+                  [width]="'auto'"
+                  [dataSource]="getImage(data.key)"
+                  [showBorders]="true"
+                >
+                  <dxi-column caption="image" ></dxi-column>
+                  <dxi-column dataField="Vulnerability"></dxi-column>
+                  <dxi-column dataField="Severity"></dxi-column>
+
+                </dx-data-grid>
+              </div>
+            </dx-data-grid>
+          </div>
+
+          <div id="bysev-tab" class="tab-pane fade">
+            <dx-data-grid id="gridContainer2"
+                          [dataSource]="Keys"
+                          [masterDetail]="{ enabled: true, template: 'severityDetails' }"
+                          keyExpr="Severity"
+                          [showBorders]="true">
+
+              <dxi-column dataField="Severity" [allowFiltering]="false"
+                          [allowSorting]="false" caption="Severity"></dxi-column>
+              <dxi-column dataField="Vulnerability" [allowFiltering]="false"
+                          [allowSorting]="false" caption="Vulnerability"></dxi-column>
+              <dxi-column dataField="Image" [allowFiltering]="false"
+                          [allowSorting]="false" [width]="370" caption="Image"></dxi-column>
+
+              <div *dxTemplate="let data of 'severityDetails'">
+                <dx-data-grid
+                  [width]="'auto'"
+                  [dataSource]="getTasks(data.key)"
+                  [showBorders]="true">
+                  <dxi-column dataField="Severity"></dxi-column>
+                  <dxi-column dataField="Vulnerability"></dxi-column>
+                  <dxi-column dataField="Image"></dxi-column>
+
+                </dx-data-grid>
+              </div>
+            </dx-data-grid>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- software-section - end
+        ================================================== -->
+
+</main>

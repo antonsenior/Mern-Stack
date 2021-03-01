@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Clouddefense</title>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!--NEW CSS-->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/fontawesome.css" rel="stylesheet">
+  <link href="assets/css/meanmenu.css" rel="stylesheet">
+  <link href="assets/css/nice-select.css" rel="stylesheet">
+<!--  <link href="assets/css/owl.carousel.css" rel="stylesheet">-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet">
+  <link href="assets/css/default.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/responsive.css" rel="stylesheet">
+
+<!--  NEW JS-->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/Popper.js"></script>
+  <script src="assets/js/jquery.sticky.js"></script>
+  <script src="assets/js/jquery.meanmenu.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <script src="assets/js/circle-progress.js"></script>
+  <script>
+    $('#circle').circleProgress({
+      value: 0.8,
+      size: 200,
+      fill: "#00a3ef",
+      thickness: "25",
+      emptyFill: "#f2f2f3",
+    }).on('circle-animation-progress', function(event, progress) {
+      $(this).find('.progress-bar-circle-percentes').html(Math.round(80 * progress) + '<i><span class="cnt">%</span></i>');
+    });;
+
+  </script>
+
+  <script src="assets/js/main.js"></script>
+
+
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

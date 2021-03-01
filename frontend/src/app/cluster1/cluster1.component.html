@@ -1,0 +1,148 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<main class="pl-200">
+
+  <!-- breadcrumb-section - start
+        ================================================== -->
+  <section id="breadcrumb-section" class="breadcrumb-section bg-white clearfix">
+    <div class="container-fluid">
+      <nav class="breadcrumb-nav ul-li clearfix">
+        <ul class="clearfix">
+          <li><a href="#!">Customer : </a>{{customerData.name}}</li>
+          <li><a href="#!">Cluster : </a>{{clusterData.cluster_name}}</li>
+          <li>Stack : {{clusterData.cnox_stack}}</li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+  <!-- breadcrumb-section - end
+        ================================================== -->
+
+
+  <!-- cluster-section - start
+        ================================================== -->
+  <section id="cluster-section" class="cluster-section sec-ptb-60 clearfix">
+    <div class="container-fluid">
+
+      <div class="section-title mb-15">
+        <h2 class="title-text mb-0">ALL Workloads</h2>
+      </div>
+
+      <div class="item-wrapper min-h-auto">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-8 col-md-6 col-sm-12">
+            <div class="chart-image">
+              <canvas baseChart
+                      [data]="pieChartData"
+                      [chartType]="pieChartType"
+                      [labels]="pieChartLabels"
+                      [options]="pieChartOptions"
+                      [colors]="pieChartColors"
+              ></canvas>
+            </div>
+          </div>
+          <div class="time-content row" style="    margin-top: 15px;">
+            <p class="mb-1">Last scanned on :</p><br>
+            <span>{{lastScanValue | date: 'yyyy-MM-dd hh:mm a'}}</span>
+          </div>
+          <!--<div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="info-list ul-li-block clearfix">
+              <ul class="clearfix">
+                <li>
+                  <img src="assets/images/icons/icon_11.png" alt="icon_not_found">
+                  Info
+                </li>
+                <li>
+                  <img src="assets/images/icons/icon_9.png" alt="icon_not_found">
+                  Warn
+                </li>
+                <li>
+                  <img src="assets/images/icons/icon_10.png" alt="icon_not_found">
+                  Error
+                </li>
+              </ul>
+            </div>
+          </div>-->
+        </div>
+      </div>
+
+      <div class="item-wrapper workload-compliance-table">
+        <div class="wrapper-head text-center">
+          <h3 class="title-text mb-0">Top Non- Compliant Workloads</h3>
+          <div class="tabs-nav ul-li-center clearfix">
+            <ul class="nav" role="tablist">
+              <li>
+                <a class="active" data-toggle="tab" href="#byRecommendation-tab">By Recommedation</a>
+              </li>
+              <li>
+                <a data-toggle="tab" href="#byWorkload-tab">By Workload</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Tab Panes -->
+        <div class="tab-content">
+          <div id="byRecommendation-tab" class="tab-pane active">
+            <div class="cnox-protection-section">
+              <div class="cnox-protection-table">
+                <div class="table-container tbody-container">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="row">Severity</th>
+                      <th>Recommedation</th>
+                      <th>Pod</th>
+                      <th>DaemonSet</th>
+                      <th>Deployment</th>
+                      <th>Namespace</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let data of recommedationData">
+                      <td scope="row">{{data['level']}}</td>
+                      <td>{{data['msg']}}</td>
+                      <td>{{data['TypeCount']['pod']}}</td>
+                      <td>{{data['TypeCount']['daemonSet']}}</td>
+                      <td>{{data['TypeCount']['deployment']}}</td>
+                      <td>{{data['TypeCount']['namespace']}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="byWorkload-tab" class="tab-pane">
+            <div class="cnox-protection-section">
+              <div class="cnox-protection-table">
+                <div class="table-container tbody-container">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="row">Workload</th>
+                        <th>Error</th>
+                        <th>Warn</th>
+                        <th>Info</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let key of keys">
+                        <td scope="row">{{key}}</td>
+                        <td>{{workLoadData[key].E}}</td>
+                        <td>{{workLoadData[key].W}}</td>
+                        <td>{{workLoadData[key].I}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- cluster-section - end
+        ================================================== -->
+
+</main>

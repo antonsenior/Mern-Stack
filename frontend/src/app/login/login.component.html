@@ -1,0 +1,74 @@
+<section id="register-section" class="register-section clearfix">
+  <div class="container">
+
+    <div class="content-wrapper">
+      <div class="brand-logo text-center mb-60 clearfix">
+        <a href="#!" class="brand-link">
+          <img src="assets/images/logo/logo_1.png" alt="logo_not_found">
+        </a>
+      </div>
+      <div class="register-form mb-30 clearfix">
+        <form action="#">
+          <div class="form-item">
+            <input type="text" id="customer-name" name="customername" [(ngModel)]="user.customername"
+                   placeholder="customername">
+            <label for="customer-name" class="form-btn"><i class="fal fa-globe"></i></label>
+          </div>
+          <div class="form-item">
+            <input type="text" id="user-name" name="username" [(ngModel)]="user.username" placeholder="username">
+            <label for="user-name" class="form-btn"><i class="fas fa-user-alt"></i></label>
+          </div>
+          <div class="form-item">
+            <input type="password" id="password-input" name="password" [(ngModel)]="user.password" required
+                   placeholder="password">
+            <label for="password-input" class="form-btn"><i class="fas fa-lock-alt"></i></label>
+
+          </div>
+          <button type="submit" class="submit-btn" (click)="onSubmit()">
+            <i class="far fa-arrow-right"></i>
+          </button>
+          <div class="check-btn-wrp">
+            <div class="check-btn">
+              <input type="checkbox" id="meep-btn">
+              <label for="meep-btn" class="d-block">Keep Me Signed in</label>
+
+            </div>
+            <a (click)="openModal()">Forgot Password?</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" (click)="onCloseHandled()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="info-list ul-li-block clearfix">
+              <!--          <div class="register-form mb-30 clearfix">-->
+              <form action="#">
+                <div class="form-item">
+                  <input type="text" id="email" name="email" [(ngModel)]="user.email" placeholder="email">
+                  <label for="user-name" class="form-btn"><i class="fal fa-user-alt"></i></label>
+                </div>
+                <button type="submit" class="push-btn bg-default-orange" (click)="onForgetSubmit()">Submit
+                </button>
+              </form>
+              <!--          </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+

@@ -1,0 +1,406 @@
+<app-header></app-header>
+
+<!-- policy-section - start
+		================================================== -->
+<section id="policy-section" class="policy-section sec-ptb-60 pt-50 clearfix">
+  <div class="container">
+
+    <div class="item-wrapper">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="policy-central">
+
+            <div class="section-title mb-30 text-center">
+              <h2 class="title-text mb-0">POLICY CENTRAL</h2>
+            </div>
+
+            <div class="select-option mb-30 clearfix">
+              <span class="item-title">Stack:</span>
+              <select nice-select [value]='policiesField.stack'>
+                <option value="bronze_stack">Bronze Stack</option>
+                <option value="silver_stack">Silver Stack</option>
+                <option value="gold_stack">Gold Stack</option>
+              </select>
+            </div>
+
+            <div href="#!" class="upload-field mb-30">
+									<span class="item-icons">
+										<img src="assets/images/icons/icon_12.png" alt="icon_not_found">
+									</span>
+
+              <h3 class="item-title mb-0">Drop files here or click to <label for="file-upload"
+                                                                             class="custom-file-upload">Select
+                File</label>
+                <input id="file-upload" type="file"/> to upload</h3>
+            </div>
+            <!--<div class="uploaded-file ul-li clearfix">-->
+            <!--<ul class="clearfix">-->
+            <!--<li>-->
+            <!--<span class="icon">-->
+            <!--<img src="assets/images/icons/icon_13.png" alt="icon_not_found">-->
+            <!--</span>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<div class="file-content">-->
+            <!--<h3 class="item-title">img_ajdhfdjabfjey-456510asdfdf.jpg</h3>-->
+            <!--<div class="progress">-->
+            <!--<div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<div class="file-size text-right">-->
+            <!--<button type="button" class="remove-btn"><i class="fas fa-times-circle"></i></button>-->
+            <!--<span class="size-text d-block">1.6 MB of 2.3 MB</span>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <div class="btns-group ul-li-right clearfix">
+              <ul class="clearfix">
+                <li>
+                  <a href="#!" class="custom-btn bg-default-orange">Upload</a>
+                </li>
+                <li>
+                  <a href="#!" class="custom-btn bg-light-gray">Discard</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-wrapper">
+      <div class="tab-container">
+        <div class="policy-tabs-nav ul-li clearfix">
+          <ul class="nav" role="tablist">
+            <li>
+              <a class="active" data-toggle="tab" href="#home">
+                <i class="fal fa-shield-check"></i>
+                General and Compliance Policies
+              </a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#menu1">
+                <i class="fal fa-binoculars"></i>
+                Monitor Policies
+              </a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#menu2">
+                <i class="fal fa-search"></i>
+                Scanner Policies
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-content">
+          <div id="home" class="tab-pane active">
+
+            <div class="row col-md-12">
+              <div class="col-md-8">
+                <div class="security-resources ul-li mb-30 clearfix">
+                  <h3 class="title-text mb-15">Security Resources</h3>
+                  <ul class="clearfix">
+                    <li>
+                      <div class="radio-btn">
+                        <label for="saver-btn" class="d-block">Saver</label>
+                        <input type="radio" id="saver-btn" name="resources-group" value="saver"
+                               [(ngModel)]="gpoliciesField.security_resource">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="radio-btn">
+                        <label for="efficient-btn" class="d-block">Efficient</label>
+                        <input type="radio" id="efficient-btn" name="resources-group" value="efficient"
+                               [(ngModel)]="gpoliciesField.security_resource">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="radio-btn">
+                        <label for="performance-btn" class="d-block">Performance</label>
+                        <input type="radio" id="performance-btn" name="resources-group" value="performance"
+                               [(ngModel)]="gpoliciesField.security_resource">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="radio-btn">
+                        <label for="steroids-btn" class="d-block">Steroids</label>
+                        <input type="radio" id="steroids-btn" name="resources-group" value="steroids"
+                               [(ngModel)]="gpoliciesField.security_resource">
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4 float-right clearfix">
+                <h3 class="title-text mb-15">Compliance Frequency</h3>
+                <div class="select-option">
+                  <select nice-select [(ngModel)]="gpoliciesField.compliance_frequency">
+                    <!--                      <option value="" selected="selected" disabled>Select</option>-->
+                    <option value="hourly">Hourly</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="upgrade-btn clearfix mb-60">
+              <h3 class="title-text mb-15">Auto Upgrade</h3>
+              <div>
+                <input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio"
+                       [(ngModel)]="policiesField.upgrade">
+                <label for="toggle-on" class="btn" style="margin-right: 5px">ON</label>
+                <input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio"
+                       [(ngModel)]="policiesField.upgrade">
+                <label for="toggle-off" class="btn">OFF</label>
+              </div>
+            </div>
+
+            <div class="btns-group ul-li-right clearfix">
+              <ul class="clearfix">
+                <li>
+                  <button class="custom-btn bg-default-orange" type="submit">Save</button>
+                </li>
+                <li>
+                  <a href="#!" class="custom-btn bg-light-gray">Reset</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div id="menu1" class="tab-pane fade">
+            <div class="input-items-list ul-li mb-60 clearfix">
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">Dashboard</span>:
+                </li>
+                <li>
+                  <div class="select-option">
+                    <select nice-select [value]="policiesField.dashboard">
+                      <!--                      <option value="" selected="selected" disabled>Select</option>-->
+                      <option value="grafana">Grafana</option>
+                      <option value="promethenus">Prometheus</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">Alerting</span>:
+                </li>
+                <li>
+                  <div class="upgrade-btn clearfix mb-60">
+                    <div>
+                      <input id="alerting-on" class="toggle toggle-left" [(ngModel)]="policiesField.alerting"
+                             name="alerting" value="false" type="radio">
+                      <label for="alerting-on" class="btn" style="margin-right: 5px">ON</label>
+                      <input id="alerting-off" class="toggle toggle-right" [(ngModel)]="policiesField.alerting"
+                             name="alerting" value="true" type="radio">
+                      <label for="alerting-off" class="btn">OFF</label>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">HA</span>:
+                </li>
+                <li>
+                  <div class="upgrade-btn clearfix mb-60">
+                    <div>
+                      <input id="ha-on" class="toggle toggle-left" name="ha" value="false" type="radio"
+                             [(ngModel)]="policiesField.ha">
+                      <label for="ha-on" class="btn" style="margin-right: 5px">ON</label>
+                      <input id="ha-off" class="toggle toggle-right" name="ha" value="true" type="radio"
+                             [(ngModel)]="policiesField.ha">
+                      <label for="ha-off" class="btn">OFF</label>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">Storage Size</span>:
+                </li>
+                <li>
+                  <div class="select-option">
+                    <select nice-select [value]="policiesField.storageSize">
+                      <!--                      <option value="" selected="selected" disabled>Select</option>-->
+                      <option value="512Mb">512Mb</option>
+                      <option value="1Gb">1Gb</option>
+                      <option value="5Gb">5Gb</option>
+                      <option value="25Gb">25Gb</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="btns-group ul-li-right clearfix">
+              <ul class="clearfix">
+                <li>
+                  <a href="#!" class="custom-btn bg-default-orange">Save</a>
+                </li>
+                <li>
+                  <a href="#!" class="custom-btn bg-light-gray">Reset</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="menu2" class="tab-pane fade">
+            <div class="input-items-list ul-li mb-60 clearfix">
+              <div class="row">
+                <div class="col-md-8 input-items-list ul-li">
+                  <ul class="clearfix">
+                    <li>
+                      <span class="title-text">Image Registry</span>:
+                    </li>
+                    <li>
+                    <div class="select-option">
+                      <select nice-select [value]="policiesField.imageRegistry">
+                        <!--                      <option value="" selected="selected" disabled>Select</option>-->
+                        <option value="dockerHub">Docker Hub</option>
+                        <option value="quay">Quay</option>
+                      </select>
+                    </div>
+                  </li>
+                  </ul>
+                </div>
+                <div class="col-md-4 input-items-list ul-li">
+                  <ul class="clearfix">
+                    <li>
+                      <span class="title-text">Scanner Namespaces</span>:
+                    </li>
+                    <li>
+                      <div class="form-item mb-0">
+                        <textarea maxlength="1024" rows="3" class="form-control" placeholder="Comma-Separated list of Namespaces" [(ngModel)]="gpoliciesField.scanner_namespaces"
+                                  name="scanner_namespaces"></textarea>
+                        <!--<div class="alert alert-danger" *ngIf="namespaces.errors?.maxlength">
+                          <div [hidden]="!namespaces.errors?.maxlength">Maximum length is 1024 character.</div>
+                        </div>-->
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">Scan Frequency</span>:
+                </li>
+                <li>
+                  <div class="select-option">
+                    <select nice-select [value]="policiesField.frequency">
+                      <!--                      <option value="" selected="selected" disabled>Select</option>-->
+                      <option value="hourly">Hourly</option>
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">External DB</span>:
+                </li>
+                <li>
+                  <div class="upgrade-btn clearfix mb-60">
+                    <div>
+                      <input id="externalDB-on" class="toggle toggle-left" [(ngModel)]="policiesField.externalDb"
+                             name="externalDB" value="false" type="radio">
+                      <label for="externalDB-on" class="btn" style="margin-right: 5px">ON</label>
+                      <input id="externalDB-off" class="toggle toggle-right" [(ngModel)]="policiesField.externalDb"
+                             name="externalDB" value="true" type="radio" checked>
+                      <label for="externalDB-off" class="btn">OFF</label>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">DB Name</span>:
+                </li>
+                <li>
+                  <div class="form-item mb-0">
+                    <input type="text" [(ngModel)]="policiesField.dbName" [disabled]="policiesField.externalDb"
+                           name="dbName">
+                  </div>
+                </li>
+              </ul>
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">User</span>:
+                </li>
+                <li>
+                  <div class="form-item mb-0">
+                    <input type="text" [(ngModel)]="policiesField.dbUser" [disabled]="policiesField.externalDb"
+                           name="dbUser">
+                  </div>
+                </li>
+              </ul>
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">Password</span>:
+                </li>
+                <li>
+                  <div class="form-item mb-0">
+                    <input type="password" [(ngModel)]="policiesField.dbPassword" name="dbPassword"
+                           [disabled]="policiesField.externalDb">
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="clearfix">
+                <li>
+                  <span class="title-text">Storage Size</span>:
+                </li>
+                <li>
+                  <div class="select-option">
+                    <select nice-select [value]="policiesField.storage">
+                      <!--                      <option value="" selected="selected" disabled>Select</option>-->
+                      <option value="1Gb">1Gb</option>
+                      <option value="2Gb">2Gb</option>
+                      <option value="5Gb">5Gb</option>
+                      <option value="25Gb">25Gb</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="btns-group ul-li-right clearfix">
+              <ul class="clearfix">
+                <li>
+                  <button type="submit" (click)="onGeneralSubmit()" class="custom-btn bg-default-orange">Save</button>
+                </li>
+                <li>
+                  <a href="#!" class="custom-btn bg-light-gray">Reset</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- policy-section - end
+    ================================================== -->
+
+<app-footer></app-footer>

@@ -1,0 +1,45 @@
+<!-- cluster sidebar - start -->
+<div class="sidebar-menu-wrapper">
+  <button type="button" id="cluster-sidebar-collapse" class="cluster-menu-btn float-right">
+    <i class="fal fa-arrow-right"></i>
+  </button>
+  <div id="cluster-sidebar" class="cluster-sidebar text-center clearfix">
+    <span class="close-btn"><i class="fal fa-times"></i></span>
+    <div class="menu-list ul-li-block clearfix">
+      <ul class="clearfix">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['/software']">
+            <span class="thumb-image"><i class="fas fa-browser"></i></span>
+            App
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/cluster-1']">
+            <span class="thumb-image"><i class="fas fa-cubes"></i></span>
+            Workload
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/cluster-2']">
+            <span class="thumb-image"><i class="fas fa-chart-network"></i></span>
+            Cluster
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a title="No url exists" *ngIf="monitorUrl=== 'undefined';else other_content" class="disabled" style="color: gray">
+            <span class="thumb-image"><i class="fas fa-monitor-heart-rate"></i></span>
+            Monitoring
+          </a>
+          <ng-template #other_content>
+            <a [href]="monitorUrl" target="_blank">
+              <span class="thumb-image"><i class="fas fa-monitor-heart-rate"></i></span>
+              Monitoring
+            </a>
+          </ng-template>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- cluster sidebar - end -->

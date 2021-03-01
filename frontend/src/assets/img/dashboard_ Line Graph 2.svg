@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="74.91" viewBox="0 0 512 74.91">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #060707;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="3103" y="4110.09" width="512" height="74.91" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="6" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="1.732"/>
+      <feFlood result="flood" flood-color="#716aca" flood-opacity="0.16"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+      <feFlood result="flood-2" flood-color="#ffb822"/>
+      <feComposite result="composite-2" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in2="blend"/>
+    </filter>
+  </defs>
+  <g transform="translate(-3103 -4110.09)" style="fill: none; filter: url(#filter)">
+    <path id="dashboard__Line_Graph_2" data-name="dashboard_ Line Graph 2" class="cls-1" d="M3106.95,4136.52c21.07-3.97,29.32-26.95,40.93-25.36,23.52,3.22,20.63,22.71,45.09,28.06,4.58,1.01,24.15-4.15,56.36-9.35,57.2-9.24,50.92,42.28,67.63,44.9,20.71,3.24,31.76-26.73,56.36-26.19,17.96,0.39,38.04,10.3,56.35,9.35,20.31-1.05,37.14-45.2,56.36-46.77,8.14-.67,44.51,28.02,67.63,29.93,35.85,2.97,37-4.26,56.36-13.09" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use transform="translate(-3103 -4110.09)" xlink:href="#dashboard__Line_Graph_2" style="stroke: #060707; filter: none; fill: none"/>
+</svg>
